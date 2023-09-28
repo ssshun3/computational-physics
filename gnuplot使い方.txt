@@ -1,0 +1,44 @@
+gnuplot を走らせるためには、カレントディレクトリで``gnuplot'' とタイプする。
+
+gnuplot>
+というプロンプトがあらわれるので、そこにコマンドをかけばよい。
+
+"output.dat" というテキストファイルを読み込み、テキストファイルの 1列目を x軸に、２列目を y軸にプロットするには、
+gnuplot> plot "output.dat" using 1:2
+1列目を x軸に、3列目を y軸にプロットするには
+gnuplot> plot "output.dat" using 1:3
+
+図をoutput.png という名のpng形式のファイルに落とすには、
+gnuplot> set term png
+gnuplot> set output "output.png"
+gnuplot> replot
+
+windowsで フォルダのファイルリストを表示し、ダブルクリックすると、ファイルをみたり印刷したりできる。
+コマンドを保存するには、
+gnuplot> save "output.plt"
+gnuplot を終わるには、
+gnuplot> exit
+保存したコマンドを使うには、
+gnuplot> load "output.plt"
+
+gnuplot>  plot "output.dat" using 1:2 title "area" with lines,\
+plot "output.dat": output.dat という名前のデータファイルをプロットする指示。
+using 1:2: このデータファイルから、1番目の列をx値として、2番目の列をy値として使用する。
+title "area": このプロットのラベルを "area" とする。
+with lines: データ点を線で結んでプロットする指示。
+\: コマンドが次の行に続くことを示す。
+
+gnuplot>  "output.dat" using 1:3 title "length" with lines
+output.dat ファイルを再度プロットしますが、この度は1番目の列をx値として、3番目の列をy値として使用する。
+このプロットのラベルは "length" です。
+データは線で結ばれて表示されます。
+
+gnuplot>  set xlabel "radius"
+x軸のラベルを "radius" に設定します。
+
+gnuplot>  replot
+最後に行ったplotコマンドやsetコマンドで行った変更を元に、グラフを再度描画します。
+
+gnuplot>  set logscale x
+gnuplot>  set logscale y
+対数表示にする。
